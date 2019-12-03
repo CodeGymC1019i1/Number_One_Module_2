@@ -1,0 +1,32 @@
+
+#content {
+    width: 420px;
+    height: 180px;
+    margin: 0 auto;
+    padding: 0px 20px 20px;
+    background: white;
+    border: 2px solid
+    navy;
+}
+h1 {
+    color: #00380b;
+}
+#data input {
+    float: left;
+    width: 15em;
+    margin-bottom: .5em;
+}
+br {
+    clear: left;
+}
+label {
+    width: 10em;
+    padding-right: 1em;
+    float: left;
+}
+#buttons input {
+    float: left;
+    margin-bottom: .5em;
+}
+
+
