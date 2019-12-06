@@ -9,7 +9,8 @@ class Stopwatch
 
    public function __construct()
    {
-       $this->startTime = microtime(false);
+       $this->startTime = microtime(true);
+       $this->endTime = microtime(true);
    }
 
     /**
