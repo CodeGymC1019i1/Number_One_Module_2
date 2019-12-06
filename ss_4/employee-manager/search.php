@@ -1,11 +1,12 @@
 <?php
-include_once "Services/EmployeeManager.php";
 include_once "Models/Employee.php";
-$path = "data/Employees.json";
-$employeeManager = new EmployeeManager($path);
-$employees = $employeeManager->getListEmployee();
-?>
+include_once "Services/EmployeeManager.php";
 
+$path = "data/Employees.json";
+$keyword = $_GET["keyword"];
+$listEmployee = new EmployeeManager($path);
+$employees = $listEmployee->search($keyword);
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -26,13 +27,6 @@ $employees = $employeeManager->getListEmployee();
     </style>
 </head>
 <body>
-<button onclick="window.location='add.php'">Thêm nhân viên mới</button>
-<br>
-<form method="get" action='search.php?keyword=<?php echo $_GET["keyword"] ?>'>
-    <input type="text" name="keyword">
-    <button>search</button>
-</form>
-<br>
 <table>
     <tr>
         <th>STT</th>
@@ -44,7 +38,7 @@ $employees = $employeeManager->getListEmployee();
     </tr>
     <?php foreach ($employees as $key => $employee): ?>
         <tr>
-            <td><?php echo $key + 1; ?></td>
+            <td><?php echo $key+1; ?></td>
             <td><?php echo $employee->name; ?></td>
             <td><?php echo $employee->dateOfBirth; ?></td>
             <td><?php echo $employee->address; ?></td>

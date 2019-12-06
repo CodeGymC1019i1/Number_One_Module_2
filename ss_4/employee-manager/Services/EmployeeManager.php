@@ -36,15 +36,13 @@ class EmployeeManager
 
     public function edit($index)
     {
-        $listEmployee = new EmployeeManager($this->path);
-        $listEmployee->readData();
-        $employees = $listEmployee->getListEmployee();
+        $employees = $this->getListEmployee();
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $employees[$index]->name = $_POST['name'];
             $employees[$index]->dateOfBirth = $_POST['dateOfBirth'];
             $employees[$index]->address = $_POST['address'];
             $employees[$index]->job = $_POST['job'];
-            $listEmployee->saveDataToFile($employees);
+            $this->saveDataToFile($employees);
             header("location: index.php");
         }
     }
@@ -64,6 +62,24 @@ class EmployeeManager
         } catch (Exception $e) {
             echo $e->getMessage();
         }
+    }
+
+    public function search($keyword)
+    {
+        $data = $this->readData();
+        $list = [];
+        foreach ($data as $key => $value) {
+            if ($value['name'] == $keyword || $value['dateOfBirth'] == $keyword || $value['address'] == $keyword || $value['job'] == $keyword ) {
+                $employee = new Employee(
+                    $value["name"],
+                    $value["dateOfBirth"],
+                    $value["address"],
+                    $value["job"]
+                );
+                array_push($list, $employee);
+            }
+        }
+        return $list;
     }
 
 

@@ -31,7 +31,7 @@ $listEmployee->edit($index);
         <legend>Edit Information of Employee</legend>
         <tr>
             <th>STT:</th>
-            <td><input type="text" name="key" value="<?php echo $index; ?>" ; disabled></td>
+            <td><input type="text" name="key" value="<?php echo $index+1; ?>" ; disabled></td>
         </tr>
         <tr>
             <th>Name:</th>
@@ -47,7 +47,7 @@ $listEmployee->edit($index);
         </tr>
         <tr>
             <th>job:</th>
-            <td><select name="job">
+            <td><select name="job" value="<?php echo $employees[$index]->job; ?>">
                     <option value="staff">Staff</option>
                     <option value="technician">Technician</option>
                     <option value="operator">Operator</option>

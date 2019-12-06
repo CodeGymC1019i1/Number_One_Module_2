@@ -1,3 +1,1 @@
-[{"name":"dong","dateOfBirth":"1994-07-10","address":"Ha Noi","job":"staff"},
-  {"name":"Cong","dateOfBirth":"1987-02-01","address":"Hai Phong","job":"technician"},
-  {"name":"Quang","dateOfBirth":"6202-01-23","address":"Ha Noi","job":"staff"}]
+[{"name":"dong","dateOfBirth":"1111-01-01","address":"gas","job":"staff"},{"name":"thang","dateOfBirth":"2018-12-30","address":"gas","job":"staff"},{"name":"cong","dateOfBirth":"2018-11-29","address":"phadin","job":"operator"}]
