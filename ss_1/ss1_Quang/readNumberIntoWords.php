@@ -15,24 +15,24 @@
 </form>
 <?php
 $number = [
-    'unit' => ['1' => 'one', '2' => 'two', '3' => 'three', '4' => 'four', '5' => 'five', '6' => 'six', '7' => 'seven', '8' => 'eight', '9' => 'nice'],
-    'exception' => ['10' => 'ten', '11' => 'eleven', '12' => 'twelve', '13' => 'thirteen', '14' => 'fourteen', '15' => 'fifteen', '16' => 'sixteen', '17' => 'seventeen', '18' => 'eighteen', '19' => 'nineteen'],
-    'dozen' => ['20' => 'twenty', '30' => 'thirty', '40' => 'forty', '50' => 'fifty', '60' => 'sixty', '70' => 'seventy', '80' => 'eighty', '90' => 'ninety'],
+    'unit' => ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nice'],
+    'exception' => ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'],
+    'dozen' => ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
 ];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $inputNumber = $_POST["nhapso"];
-    foreach ($number as $so => $doc) {
-        for ($i = 1; $i < 10; $i++){
-            if (floor($inputNumber / 100) >= 1) {
-                $hunderds = $doc[$i] . 'hundreds and ';
-                if (floor($inputNumber % 100 % 10) > 1) {
-                    $dozens = $doc[$i * 10];
-                }
-            }
-
-        }
+    if (floor($inputNumber / 100) >0) {
+        $hunderds = $number['unit'][floor($inputNumber / 100) - 1] . ' hundreds and ';
     }
-    echo $hunderds.$dozens;
+    if (floor($inputNumber % 100 / 10) > 1) {
+        $dozens = $number['dozen'][floor($inputNumber % 100 /10) - 2].' ';
+        if(floor($inputNumber % 100 % 10)){
+            $unit=$number['unit'][floor($inputNumber % 100%10) - 1];
+        }
+    } else if (floor($inputNumber % 100 % 10) == 1) {
+        $dozens = $number['exception'][floor($inputNumber % 100 / 10)].' ';
+    }
+    echo $hunderds . $dozens.$unit;
 }
 ?>
 </body>
