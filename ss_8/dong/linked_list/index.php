@@ -1,1 +1,27 @@
 <?php
+include_once"MyLinkedList.php";
+$linkedList = new MyLinkedList();
+$linkedList->addFirst(11);
+$linkedList->addFirst(22);
+$linkedList->addFirst(22);
+$linkedList->addFirst(22);
+$linkedList->addFirst(33);
+$linkedList->addFirst(33);
+$linkedList->addFirst(33);
+$linkedList->addFirst(44);
+$linkedList->addFirst(44);
+$linkedList->addFirst(44);
+$linkedList->addFirst(43);
+$linkedList->addFirst(43);
+$linkedList->addFirst(43);
+$linkedList->addFirst(21);
+$linkedList->addFirst(21);
+$linkedList->addFirst(21);
+$linkedList->addFirst(43);
+$linkedList->addFirst(43);
+$linkedList->addFirst(43);
+var_dump($linkedList);
+//$totalNodes = $linkedList->totalNodes();
+//$linkData = $linkedList->readList();
+//echo $totalNodes;
+//echo implode ('-' , $linkData);

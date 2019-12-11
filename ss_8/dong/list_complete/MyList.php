@@ -20,14 +20,14 @@ class MyList
             array_push($this->list, $obj);
         } else {
             if ($this->size < $this->capacity) {
-                $list1 = array_slice($this->list, 0, $index);
+                $list1 = array_slice($this->list, 0, $index-1);
                 array_push($list1, $obj);
                 $list2 = array_slice($this->list, $index, $this->size() - 1);
                 $this->list = array_merge($list2, $list1);
 
             } else {
                 $this->ensureCapacity(DEFAULT_CAPACITY);
-                $list1 = array_slice($this->list, 0, $index);
+                $list1 = array_slice($this->list, 0, $index-1);
                 array_push($list1, $obj);
                 $list2 = array_slice($this->list, $index, $this->size() - 1);
                 $this->list = array_merge($list2, $list1);
