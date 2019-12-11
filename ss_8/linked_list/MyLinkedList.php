@@ -16,25 +16,43 @@ class MyLinkedList
 
     }
 
+    public function add($index, $data)
+    {
+        if ($index == 0){
+            $this->firstNode($data);
+        }else{
+
+        }
+    }
+
     public function addFirst($data)
     {
         $link = new Node($data);
         $link->next = $this->firstNode;
         $this->firstNode = $link;
-
+        if ($this->lastNode == NULL) {
+            $this->lastNode = $link;
+        }
         $this->numNodes++;
     }
 
     public function addLast($data)
     {
-        $this->lastNode = new Node($data);
-        $this->lastNode->next = NULL;
-        $this->numNodes++;
+        if ($this->firstNode !== NULL) {
+            $link = new Node($data);
+            $this->lastNode->next = $link;
+            $link->next = NULL;
+            $this->lastNode = $link;
+            $this->numNodes++;
+        } else {
+            $this->addFirst($data);
+        }
     }
 
     public function remove($index)
     {
-        
+        $currentNode = $this->firstNode;
+
     }
 
 }
