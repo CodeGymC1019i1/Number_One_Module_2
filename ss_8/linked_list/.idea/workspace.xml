@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7943b3e8-88f9-4817-83e6-7dd42482a3cb" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="ProjectId" id="1UoVlU8YR91d4zVeGMsYTXRHc9T" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../LinkedList/LinkList.php" />
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7943b3e8-88f9-4817-83e6-7dd42482a3cb" name="Default Changelist" comment="" />
+      <created>1576023085738</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1576023085738</updated>
+      <workItem from="1576023087018" duration="837000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1174" y="300" width="530" height="598" key="FileChooserDialogImpl" timestamp="1576023278430">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="1174" y="300" width="530" height="598" key="FileChooserDialogImpl/0.34.1920.1046@0.34.1920.1046" timestamp="1576023278430" />
+    <state x="1193" y="374" width="493" height="449" key="NewPhpClassDialog" timestamp="1576023265260">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="1193" y="374" width="493" height="449" key="NewPhpClassDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1576023265260" />
+    <state x="1210" y="510" width="458" height="178" key="NewPhpFileDialog" timestamp="1576023095680">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="1210" y="510" width="458" height="178" key="NewPhpFileDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1576023095680" />
+    <state x="906" y="45" width="840" height="1034" key="search.everywhere.popup" timestamp="1576023959114">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="906" y="45" width="840" height="1034" key="search.everywhere.popup/0.34.1920.1046@0.34.1920.1046" timestamp="1576023959114" />
+  </component>
+</project>
