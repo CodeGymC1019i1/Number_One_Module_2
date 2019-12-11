@@ -23,8 +23,4 @@ class Employee
     {
         $this->name = $name;
     }
-    public function setInfo()
-    {
-        return "They: ".$this->they."- Name: ".$this->name."- Address: " . $this->address;
-    }
 }

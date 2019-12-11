@@ -2,26 +2,14 @@
 use Controller\Employee;
 use Controller\EmployeeManager;
 
-if($_SERVER['REQUEST_METHOD']  === 'POST'){
+include_once "../class/Employee.php";
+include_once "../class/EmployeeManager.php";
 
-    include_once "../class/Employee.php";
-    include_once "../class/EmployeeManager.php";
-
-    $they = $_POST['they'];
-    $name = $_POST['name'];
-    $birthday = $_POST['birthday'];
-    $address = $_POST['address'];
-    $position = $_POST['position'];
-    
-    $pathFile = "../data.json";
-
-    $employee = new Employee($they, $name, $birthday, $address, $position);
-    $employeeManager = new EmployeeManager($pathFile);
-    $employeeManager->add($employee);
-    header("Location: ../index.php");
-
-}
-
+$pathFile = "../data.json";
+$listEmployee = new EmployeeManager($pathFile);
+$employee = $listEmployee->getList();   
+$listEmployee->edit($index);
+$index = (int)$_GET['index'];
 ?>
 
 <!DOCTYPE html>
@@ -43,25 +31,25 @@ if($_SERVER['REQUEST_METHOD']  === 'POST'){
             <form method="POST">
                 <div class="form-group">
                 <label>Họ</label>
-                    <input type="text" class="form-control" name="they">
+                    <input type="text" class="form-control" name="they" value="<?php echo $employee[$index]->they; ?>">
                 </div>
                 <div class="form-group">
                     <label>Tên</label>
-                    <input type="text" class="form-control" name="name">
+                    <input type="text" class="form-control" name="name" value="<?php echo $employee[$index]->name; ?>">
                 </div>
                 <div class="form-group">
                     <label>Ngày sinh</label>
-                    <input type="number" class="form-control" name="birthday">
+                    <input type="number" class="form-control" name="birthday" value="<?php echo $employee[$index]->birthday; ?>">
                 </div>
                 <div class="form-group">
                     <label>Địa chỉ</label>
-                    <input type="text" class="form-control" name="address">
+                    <input type="text" class="form-control" name="address" value="<?php echo $employee[$index]->address; ?>">
                 </div>
                 <div class="form-group">
                     <label>Chức vụ</label>
-                    <input type="text" class="form-control" name="position">
+                    <input type="text" class="form-control" name="position" value="<?php echo $employee[$index]->position; ?>">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Edit</button>
             </form>
         </div>
     </div>

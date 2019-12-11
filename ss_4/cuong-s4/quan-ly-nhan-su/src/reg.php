@@ -1,23 +1,23 @@
 <?php
-use Controller\Employee;
-use Controller\EmployeeManager;
+use Controller\User;
+use Controller\UserManager;
 
 if($_SERVER['REQUEST_METHOD']  === 'POST'){
 
-    include_once "../class/Employee.php";
-    include_once "../class/EmployeeManager.php";
+    include_once "../class/Manager.php";
+    include_once "../class/UserManager.php";
+    include_once "../class/User.php";
 
-    $they = $_POST['they'];
-    $name = $_POST['name'];
-    $birthday = $_POST['birthday'];
-    $address = $_POST['address'];
-    $position = $_POST['position'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $email = $_POST['email'];
+    $level = $_POST['level'];
     
-    $pathFile = "../data.json";
+    $pathFile = "../user.json";
 
-    $employee = new Employee($they, $name, $birthday, $address, $position);
-    $employeeManager = new EmployeeManager($pathFile);
-    $employeeManager->add($employee);
+    $user = new User($username, $password, $email, $level);
+    $userManager = new UserManager($pathFile);
+    $userManager->add($user);
     header("Location: ../index.php");
 
 }
@@ -39,27 +39,23 @@ if($_SERVER['REQUEST_METHOD']  === 'POST'){
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1>Add</h1>
+            <h1>Đăng ký</h1>
             <form method="POST">
                 <div class="form-group">
-                <label>Họ</label>
-                    <input type="text" class="form-control" name="they">
+                    <label>Tên tài khoản</label>
+                    <input type="text" class="form-control" name="username">
                 </div>
                 <div class="form-group">
-                    <label>Tên</label>
-                    <input type="text" class="form-control" name="name">
+                    <label>Mật khẩu</label>
+                    <input type="text" class="form-control" name="password">
                 </div>
                 <div class="form-group">
-                    <label>Ngày sinh</label>
-                    <input type="number" class="form-control" name="birthday">
+                    <label>Email</label>
+                    <input type="email" class="form-control" name="email">
                 </div>
                 <div class="form-group">
-                    <label>Địa chỉ</label>
-                    <input type="text" class="form-control" name="address">
-                </div>
-                <div class="form-group">
-                    <label>Chức vụ</label>
-                    <input type="text" class="form-control" name="position">
+                    <label>Quyền</label>
+                    <input type="number" class="form-control" name="level">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

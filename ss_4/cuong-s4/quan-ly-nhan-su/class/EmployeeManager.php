@@ -1,15 +1,10 @@
 <?php
 namespace Controller;
 
-    class EmployeeManager
+include_once "Manager.php";
+
+    class EmployeeManager extends Manager
     {
-        private $pathFile;
-
-        public function __construct($pathFile)
-        {
-            $this->pathFile = $pathFile;
-        }
-
         public function add($employee)
         {
             $listEmployee = $this->readFile();
@@ -21,22 +16,30 @@ namespace Controller;
                 'address' => $employee->address,
                 'position' => $employee->position
             ];
-            array_push($listEmployee, $employee);
+            array_push($listEmployee, $data);
             $this->saveDataToFile($listEmployee);
         }
 
-        public function readFile()
+        public function delete($index)
         {
-            $dataJson = file_get_contents($this->pathFile);
-            return json_decode($dataJson, true);
+            $employee = $this->readFile();
+            if(array_key_exists($index, $employee)){
+                array_splice($employee, $index, 1);
+            }
+            $this->saveDataToFile($employee);
         }
-        public function saveDataToFile($employee)  
+        public function edit($index)
         {
-            try {
-                $dataJson = json_encode($employee);
-                file_put_contents($this->pathFile, $dataJson);
-            } catch (\Exception $e) {
-                echo $e->getMessage();
+            $employee = $this->getList();
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $employee[$index]->they = $_POST['they'];
+            $employee[$index]->name = $_POST['name'];
+            $employee[$index]->birthday = $_POST['birthday'];
+            $employee[$index]->address = $_POST['address'];
+            $employee[$index]->position = $_POST['position'];
+
+            $this->saveDataToFile($employee);
+            header("location: ../index.php");
             }
         }
         public function getList()
