@@ -5,18 +5,13 @@ class Patient
 {
     public $code;
     public $name;
-    public $listPatient;
+    public $next;
 
     public function __construct($name, $code)
     {
         $this->name = $name;
         $this->code = $code;
+        $this->next = null;
 
-    }
-
-
-    public function __toString()
-    {
-        return "name: ".$this->name." code: ".$this->code."<br>";
     }
 }

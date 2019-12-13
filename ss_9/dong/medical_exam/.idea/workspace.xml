@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cddd9570-2316-4bd7-ae8f-4fbfebfdaf4e" name="Default Changelist" comment="" />
+    <list default="true" id="78302f12-0a36-4644-834f-2626874d0df8" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,7 +12,7 @@
       <executable />
     </execution>
   </component>
-  <component name="ProjectId" id="1UrgMv0LWukMwEdDOlVToLBoIsP" />
+  <component name="ProjectId" id="1UswxwbMUcUnK3posJ6A2Zb33DS" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -21,8 +21,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../reverse_stack/Stack.php" />
-    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -41,12 +40,16 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cddd9570-2316-4bd7-ae8f-4fbfebfdaf4e" name="Default Changelist" comment="" />
-      <created>1576120083920</created>
+      <changelist id="78302f12-0a36-4644-834f-2626874d0df8" name="Default Changelist" comment="" />
+      <created>1576158860836</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1576120083920</updated>
-      <workItem from="1576120084998" duration="5712000" />
+      <updated>1576158860836</updated>
+      <workItem from="1576158861913" duration="2287000" />
+      <workItem from="1576200027175" duration="634000" />
+      <workItem from="1576200729051" duration="430000" />
+      <workItem from="1576203123776" duration="14000" />
+      <workItem from="1576203139563" duration="4000" />
     </task>
     <servers />
   </component>
@@ -54,21 +57,13 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="257" width="530" height="598" key="FileChooserDialogImpl" timestamp="1576120457317">
+    <state x="690" y="257" width="530" height="598" key="FileChooserDialogImpl" timestamp="1576203136684">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
-    <state x="690" y="257" width="530" height="598" key="FileChooserDialogImpl/0.34.1920.1046@0.34.1920.1046" timestamp="1576120457317" />
-    <state x="724" y="331" width="462" height="449" key="NewPhpClassDialog" timestamp="1576120464307">
+    <state x="690" y="257" width="530" height="598" key="FileChooserDialogImpl/0.34.1920.1046@0.34.1920.1046" timestamp="1576203136684" />
+    <state x="1225" y="45" width="840" height="1034" key="search.everywhere.popup" timestamp="1576159622484">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
-    <state x="724" y="331" width="462" height="449" key="NewPhpClassDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1576120464307" />
-    <state x="726" y="467" width="458" height="178" key="NewPhpFileDialog" timestamp="1576120441193">
-      <screen x="0" y="34" width="1920" height="1046" />
-    </state>
-    <state x="726" y="467" width="458" height="178" key="NewPhpFileDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1576120441193" />
-    <state x="325" y="103" key="SettingsEditor" timestamp="1576120430881">
-      <screen x="0" y="34" width="1920" height="1046" />
-    </state>
-    <state x="325" y="103" key="SettingsEditor/0.34.1920.1046@0.34.1920.1046" timestamp="1576120430881" />
+    <state x="1225" y="45" width="840" height="1034" key="search.everywhere.popup/0.34.1920.1046@0.34.1920.1046" timestamp="1576159622484" />
   </component>
 </project>
