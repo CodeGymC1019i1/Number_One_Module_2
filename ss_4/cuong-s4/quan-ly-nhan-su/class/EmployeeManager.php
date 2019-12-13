@@ -16,7 +16,7 @@ include_once "Manager.php";
                 'address' => $employee->address,
                 'position' => $employee->position
             ];
-            array_push($listEmployee, $data);
+            array_unshift($listEmployee, $data);
             $this->saveDataToFile($listEmployee);
         }
 
@@ -30,15 +30,15 @@ include_once "Manager.php";
         }
         public function edit($index)
         {
-            $employee = $this->getList();
+            $employees = $this->getList();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $employee[$index]->they = $_POST['they'];
-            $employee[$index]->name = $_POST['name'];
-            $employee[$index]->birthday = $_POST['birthday'];
-            $employee[$index]->address = $_POST['address'];
-            $employee[$index]->position = $_POST['position'];
+            $employees[$index]->they = $_POST['editThey'];
+            $employees[$index]->name = $_POST['editName'];
+            $employees[$index]->birthday = $_POST['editBirthday'];
+            $employees[$index]->address = $_POST['editAddress'];
+            $employees[$index]->position = $_POST['editPosition'];
 
-            $this->saveDataToFile($employee);
+            $this->saveDataToFile($employees);
             header("location: ../index.php");
             }
         }

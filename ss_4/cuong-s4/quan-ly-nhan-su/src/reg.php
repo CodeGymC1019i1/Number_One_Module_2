@@ -1,6 +1,11 @@
 <?php
+session_start();
 use Controller\User;
 use Controller\UserManager;
+if(isset($_SESSION['username'])){
+    echo "<script>alert('ban da dang nhap')</script>";
+    echo "<script>window.location = '../index.php'</script>";
+}
 
 if($_SERVER['REQUEST_METHOD']  === 'POST'){
 
@@ -11,7 +16,7 @@ if($_SERVER['REQUEST_METHOD']  === 'POST'){
     $username = $_POST['username'];
     $password = $_POST['password'];
     $email = $_POST['email'];
-    $level = $_POST['level'];
+    $level = 'Member';
     
     $pathFile = "../user.json";
 
@@ -52,10 +57,6 @@ if($_SERVER['REQUEST_METHOD']  === 'POST'){
                 <div class="form-group">
                     <label>Email</label>
                     <input type="email" class="form-control" name="email">
-                </div>
-                <div class="form-group">
-                    <label>Quyền</label>
-                    <input type="number" class="form-control" name="level">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

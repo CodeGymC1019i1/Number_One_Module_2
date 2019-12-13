@@ -8,8 +8,8 @@ include_once "../class/EmployeeManager.php";
 $pathFile = "../data.json";
 $listEmployee = new EmployeeManager($pathFile);
 $employee = $listEmployee->getList();   
-$listEmployee->edit($index);
 $index = (int)$_GET['index'];
+$listEmployee->edit($index);
 ?>
 
 <!DOCTYPE html>
@@ -31,23 +31,23 @@ $index = (int)$_GET['index'];
             <form method="POST">
                 <div class="form-group">
                 <label>Họ</label>
-                    <input type="text" class="form-control" name="they" value="<?php echo $employee[$index]->they; ?>">
+                    <input type="text" class="form-control" name="editThey" value="<?php echo $employee[$index]->they; ?>">
                 </div>
                 <div class="form-group">
                     <label>Tên</label>
-                    <input type="text" class="form-control" name="name" value="<?php echo $employee[$index]->name; ?>">
+                    <input type="text" class="form-control" name="editName" value="<?php echo $employee[$index]->name; ?>">
                 </div>
                 <div class="form-group">
                     <label>Ngày sinh</label>
-                    <input type="number" class="form-control" name="birthday" value="<?php echo $employee[$index]->birthday; ?>">
+                    <input type="date" class="form-control" name="editBirthday" value="<?php echo $employee[$index]->birthday; ?>">
                 </div>
                 <div class="form-group">
                     <label>Địa chỉ</label>
-                    <input type="text" class="form-control" name="address" value="<?php echo $employee[$index]->address; ?>">
+                    <input type="text" class="form-control" name="editAddress" value="<?php echo $employee[$index]->address; ?>">
                 </div>
                 <div class="form-group">
                     <label>Chức vụ</label>
-                    <input type="text" class="form-control" name="position" value="<?php echo $employee[$index]->position; ?>">
+                    <input type="text" class="form-control" name="editPosition" value="<?php echo $employee[$index]->position; ?>">
                 </div>
                 <button type="submit" class="btn btn-primary">Edit</button>
             </form>

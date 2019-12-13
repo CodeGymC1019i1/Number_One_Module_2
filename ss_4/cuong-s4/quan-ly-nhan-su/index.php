@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include_once "class/Employee.php";
 include_once "class/EmployeeManager.php";
 
@@ -18,9 +20,11 @@ $employee = $employeeManager->getList();
 <div class="container">
     <div class="row">
         <div class="col-12 page-title mb-2">
-            <h1>Users</h1>
+            <h1>Quản lý nhân viên</h1>
             <button type="button" class="btn btn-outline-primary"><a href="src/add.php">Create</a></button>
-            <button type="button" class="btn btn-outline-primary"><a href="src/reg.php">Đăng ký</a></button>
+            <button type="button" class="btn btn-outline-primary"><a href="src/logout.php">Logout</a></button>
+            <button type="button" class="btn btn-outline-primary"><a href="src/reg.php">Register</a></button>
+            <button type="button" class="btn btn-outline-primary"><a href="src/login.php">Login</a></button>
         </div>
         <div class="col-12 col-md-12">
             <table class="table">
@@ -42,7 +46,7 @@ $employee = $employeeManager->getList();
                     <th scope="row"><?php echo $key + 1 ?></th>
                     <td><?php echo $employee->they ?></td>
                     <td><?php echo $employee->name ?></td>
-                    <td><?php echo $employee->birthday ?></td>
+                    <td><?php echo date('d/m/Y', strtotime($employee->birthday)) ?></td>
                     <td><?php echo $employee->address ?></td>
                     <td><?php echo $employee->position ?></td>
                     <td><a href="src/delete.php?index=<?php echo $key ?>" onclick="return confirm('Ban chac chan muon xoa khong')" class="btn btn-danger">Delete</a></td>

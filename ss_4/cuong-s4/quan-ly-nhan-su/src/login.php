@@ -1,38 +1,33 @@
 <?php
 session_start();
-use Controller\Employee;
-use Controller\EmployeeManager;
+use Controller\User;
+use Controller\UserManager;
 
-if(!$_SESSION['username'] == 'admin'){
-    echo "<script>alert('ban khong co quyen')</script>";
+if(isset($_SESSION['username'])){
+    echo "<script>alert('ban da dang nhap')</script>";
     echo "<script>window.location = '../index.php'</script>";
 }
 
-if($_SERVER['REQUEST_METHOD']  === 'POST'){
+include_once '../class/User.php';
+include_once '../class/UserManager.php';
+$pathFile  = '../user.json';
 
-    include_once "../class/Employee.php";
-    include_once "../class/EmployeeManager.php";
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $listUser = new UserManager($pathFile);
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-    $they = $_POST['they'];
-    $name = $_POST['name'];
-    $birthday = $_POST['birthday'];
-    $address = $_POST['address'];
-    $position = $_POST['position'];
-    
-    $pathFile = "../data.json";
-
-    $employee = new Employee($they, $name, $birthday, $address, $position);
-    $employeeManager = new EmployeeManager($pathFile);
-    $employeeManager->add($employee);
-    header("Location: ../index.php");
-
+    if (empty($username) || empty($password)) {
+        echo "<script type='text/javascript'>alert('login failed! username and password is not empty')</script>";
+    } else {
+        $_SESSION['username'] = $username;
+        $listUser->checkLogin($username, $password);
+    }
 }
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,32 +35,19 @@ if($_SERVER['REQUEST_METHOD']  === 'POST'){
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
-
 <body>
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1>Add</h1>
+            <h1>Đăng nhập</h1>
             <form method="POST">
                 <div class="form-group">
-                <label>Họ</label>
-                    <input type="text" class="form-control" name="they">
+                    <label>Tên tài khoản</label>
+                    <input type="text" class="form-control" name="username">
                 </div>
                 <div class="form-group">
-                    <label>Tên</label>
-                    <input type="text" class="form-control" name="name">
-                </div>
-                <div class="form-group">
-                    <label>Ngày sinh</label>
-                    <input type="date" class="form-control" name="birthday">
-                </div>
-                <div class="form-group">
-                    <label>Địa chỉ</label>
-                    <input type="text" class="form-control" name="address">
-                </div>
-                <div class="form-group">
-                    <label>Chức vụ</label>
-                    <input type="text" class="form-control" name="position">
+                    <label>Mật khẩu</label>
+                    <input type="text" class="form-control" name="password">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
