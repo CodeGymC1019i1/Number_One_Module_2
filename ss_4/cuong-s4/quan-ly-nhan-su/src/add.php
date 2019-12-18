@@ -21,7 +21,7 @@ if($_SERVER['REQUEST_METHOD']  === 'POST'){
 
     if(isset($_FILES['img'])){
         $errors= array();
-        $img = $_FILES['img']['name'];
+        $img = date("Y-m-d-").$_FILES['img']['name'];
         $file_tmp = $_FILES['img']['tmp_name'];
         $file_ext=strtolower(end(explode('.',$_FILES['img']['name'])));
         $extensions= array("jpeg","jpg","png");
@@ -29,7 +29,7 @@ if($_SERVER['REQUEST_METHOD']  === 'POST'){
       if(in_array($file_ext,$extensions) == false){
          $errors[]="extension not allowed, please choose a JPEG or PNG file.";
          $img = '/person.jpg';
-      }
+      }  
       if(empty($errors)==true) {
          move_uploaded_file($file_tmp,"images/".$img);
       }else{

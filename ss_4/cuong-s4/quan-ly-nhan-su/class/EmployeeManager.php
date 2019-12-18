@@ -23,15 +23,18 @@ include_once "Manager.php";
         public function delete($index)
         {
             $employee = $this->readFile();
+            $employees = $this->getList();
             if(array_key_exists($index, $employee)){
                 array_splice($employee, $index, 1);
+                unlink('../src/images/'.$employees[$index]->img);
             }
             $this->saveDataToFile($employee);
         }
+
         public function edit($index)
         {
             $employees = $this->getList();
-            $employees[$index]->img = $this->image();
+            $employees[$index]->img = $this->image($index);
             $employees[$index]->name = $_POST['editName'];
             $employees[$index]->birthday = $_POST['editBirthday'];
             $employees[$index]->address = $_POST['editAddress'];
@@ -39,27 +42,31 @@ include_once "Manager.php";
             $this->saveDataToFile($employees);
         }
         
-        public function image()
+        public function image($index)
         {
+            $employees = $this->getList();
+
             if(isset($_FILES['editImg'])){
-                $errors= array();
-                $img = $_FILES['editImg']['name'];
+                $errors = array();
+                $img = date("Y-m-d-").$_FILES['editImg']['name'];
                 $file_tmp = $_FILES['editImg']['tmp_name'];
                 $file_ext=strtolower(end(explode('.',$_FILES['editImg']['name'])));
                 $extensions= array("jpeg","jpg","png");
               
-              if(in_array($file_ext,$extensions)=== false){
+                if(in_array($file_ext,$extensions)=== false){
                  $errors[]="extension not allowed, please choose a JPEG or PNG file.";
-                 $img = '/person.jpg';
-              }
-              if(empty($errors)==true) {
-                 move_uploaded_file($file_tmp,"../src/images/".$img);
-              }else{
+                 $img = $employees[$index]->img;
+                }
+                if(empty($errors)==true) {
+                unlink('../src/images/'.$employees[$index]->img);
+                move_uploaded_file($file_tmp,"../src/images/".$img);
+                }else{
                  print_r($errors);
-              }
+                }
             }
             return $img;
         }
+
         public function getList()
         {
             $data = $this->readFile();

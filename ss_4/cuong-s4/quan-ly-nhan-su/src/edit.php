@@ -55,8 +55,8 @@ if($_SESSION['username'] !== "admin"){
                     <input type="text" class="form-control" name="editPosition" value="<?php echo $employee[$index]->position; ?>">
                 </div>
                 <div class="form-group">
-                <label><img src="images/<?php echo $employee[$index]->img; ?>" class="photo"></label>
-                <input type="file" class="form-control" name="editImg">
+                <label><img onClick="triggerClick()" id="Display" src="images/<?php echo $employee[$index]->img; ?>" class="photo"></label>
+                <input type="file" class="form-control" name="editImg" onChange="displayImage(this)" id="idImage">
                 </div>
                 <button type="submit" class="btn btn-primary">Edit</button>
             </form>
@@ -64,6 +64,21 @@ if($_SESSION['username'] !== "admin"){
     </div>
 </div>
 </body>
+<script type="text/javascript">
+function triggerClick(e) {
+    document.querySelector('#idImage').click();
+}
+
+function displayImage(e) {
+    if (e.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.querySelector('#Display').setAttribute('src', e.target.result);
+        }
+        reader.readAsDataURL(e.files[0]);
+    }
+}
+</script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

@@ -24,12 +24,6 @@ class UserManager extends Manager
             header("location: ../index.php");
         }
     }
-    // public function checkLevel()
-    // {
-    //     $listUser = $this->readFile();
-    //     return $listUser->level;
-    // }
-
     // public function getList()
     //     {
     //         $data = $this->readFile();
