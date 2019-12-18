@@ -10,7 +10,7 @@ include_once "Manager.php";
             $listEmployee = $this->readFile();
 
             $data = [
-                'they' => $employee->they,
+                'img' => $employee->img,
                 'name' => $employee->name,
                 'birthday' => $employee->birthday,
                 'address' => $employee->address,
@@ -31,16 +31,34 @@ include_once "Manager.php";
         public function edit($index)
         {
             $employees = $this->getList();
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $employees[$index]->they = $_POST['editThey'];
+            $employees[$index]->img = $this->image();
             $employees[$index]->name = $_POST['editName'];
             $employees[$index]->birthday = $_POST['editBirthday'];
             $employees[$index]->address = $_POST['editAddress'];
             $employees[$index]->position = $_POST['editPosition'];
-
             $this->saveDataToFile($employees);
-            header("location: ../index.php");
+        }
+        
+        public function image()
+        {
+            if(isset($_FILES['editImg'])){
+                $errors= array();
+                $img = $_FILES['editImg']['name'];
+                $file_tmp = $_FILES['editImg']['tmp_name'];
+                $file_ext=strtolower(end(explode('.',$_FILES['editImg']['name'])));
+                $extensions= array("jpeg","jpg","png");
+              
+              if(in_array($file_ext,$extensions)=== false){
+                 $errors[]="extension not allowed, please choose a JPEG or PNG file.";
+                 $img = '/person.jpg';
+              }
+              if(empty($errors)==true) {
+                 move_uploaded_file($file_tmp,"../src/images/".$img);
+              }else{
+                 print_r($errors);
+              }
             }
+            return $img;
         }
         public function getList()
         {
@@ -48,7 +66,7 @@ include_once "Manager.php";
             
             $arr = [];
             foreach ($data as $item) {
-                $employee = new Employee($item['they'],$item['name'],$item['birthday'],$item['address'],$item['position']
+                $employee = new Employee($item['img'],$item['name'],$item['birthday'],$item['address'],$item['position']
                                     );
                                     array_push($arr, $employee);
                                 }

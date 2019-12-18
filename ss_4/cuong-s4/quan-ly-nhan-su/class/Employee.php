@@ -3,14 +3,14 @@ namespace Controller;
 
 class Employee
 {
-    public $they;
+    public $img;
     public $name;
     public $birthday;
     public $address;
     public $position;
-    public function __construct($they, $name, $birthday, $address, $position)
+    public function __construct($img, $name, $birthday, $address, $position)
     {
-        $this->they = $they;
+        $this->img = $img;
         $this->name = $name;
         $this->birthday = $birthday;
         $this->address = $address;

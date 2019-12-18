@@ -3,6 +3,7 @@ session_start();
 use Controller\User;
 use Controller\UserManager;
 
+
 if(isset($_SESSION['username'])){
     echo "<script>alert('ban da dang nhap')</script>";
     echo "<script>window.location = '../index.php'</script>";
@@ -10,7 +11,8 @@ if(isset($_SESSION['username'])){
 
 include_once '../class/User.php';
 include_once '../class/UserManager.php';
-$pathFile  = '../user.json';
+
+$pathFile = "../user.json";
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $listUser = new UserManager($pathFile);

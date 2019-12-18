@@ -2,14 +2,22 @@
 use Controller\Employee;
 use Controller\EmployeeManager;
 
-include_once "../class/Employee.php";
-include_once "../class/EmployeeManager.php";
+session_start();
+if($_SESSION['username'] !== "admin"){
+    echo "<script>alert('ban khong co quyen')</script>";
+    echo "<script>window.location = '../index.php'</script>";
+}
+    include_once "../class/Employee.php";
+    include_once "../class/EmployeeManager.php";
+    $pathFile = "../data.json";
 
-$pathFile = "../data.json";
-$listEmployee = new EmployeeManager($pathFile);
-$employee = $listEmployee->getList();   
-$index = (int)$_GET['index'];
-$listEmployee->edit($index);
+    $listEmployee = new EmployeeManager($pathFile);
+    $employee = $listEmployee->getList();   
+    $index = (int)$_GET['index'];
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $listEmployee->edit($index);
+    header("location: ../index.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +28,7 @@ $listEmployee->edit($index);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
@@ -27,12 +36,8 @@ $listEmployee->edit($index);
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1>Add</h1>
-            <form method="POST">
-                <div class="form-group">
-                <label>Họ</label>
-                    <input type="text" class="form-control" name="editThey" value="<?php echo $employee[$index]->they; ?>">
-                </div>
+            <h1>Edit</h1>
+            <form method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>Tên</label>
                     <input type="text" class="form-control" name="editName" value="<?php echo $employee[$index]->name; ?>">
@@ -46,8 +51,12 @@ $listEmployee->edit($index);
                     <input type="text" class="form-control" name="editAddress" value="<?php echo $employee[$index]->address; ?>">
                 </div>
                 <div class="form-group">
-                    <label>Chức vụ</label>
+                    <label>Group</label>
                     <input type="text" class="form-control" name="editPosition" value="<?php echo $employee[$index]->position; ?>">
+                </div>
+                <div class="form-group">
+                <label><img src="images/<?php echo $employee[$index]->img; ?>" class="photo"></label>
+                <input type="file" class="form-control" name="editImg">
                 </div>
                 <button type="submit" class="btn btn-primary">Edit</button>
             </form>

@@ -18,6 +18,7 @@ class Patient
             'code' => $this->code
         ];
         array_push($this->arr, $data);
+        return $this->arr;
     }
     public function __toString()
     {

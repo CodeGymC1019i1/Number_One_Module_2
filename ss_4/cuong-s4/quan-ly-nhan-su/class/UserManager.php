@@ -24,26 +24,26 @@ class UserManager extends Manager
             header("location: ../index.php");
         }
     }
-    public function checkLevel()
-    {
-        $listUser = $this->readFile();
-        return $listUser->level;
-    }
+    // public function checkLevel()
+    // {
+    //     $listUser = $this->readFile();
+    //     return $listUser->level;
+    // }
 
-//     public function getList()
-//         {
-//             $data = $this->readFile();
+    // public function getList()
+    //     {
+    //         $data = $this->readFile();
             
-//             $arr = [];
-//             foreach ($data as $item) {
-//                 $user = new User(
-//                 $item['username'],
-//                 $item['password'],
-//                 $item['email'],
-//                 $item['level']
-//                                     );
-//                                     array_push($arr, $user);
-//                                 }
-//                                 return $arr;
-//                             }
+    //         $arr = [];
+    //         foreach ($data as $item) {
+    //             $user = new User(
+    //             $item['username'],
+    //             $item['password'],
+    //             $item['email'],
+    //             $item['level']
+    //                                 );
+    //                                 array_push($arr, $user);
+    //                             }
+    //                             return $arr;
+    //                         }
  }

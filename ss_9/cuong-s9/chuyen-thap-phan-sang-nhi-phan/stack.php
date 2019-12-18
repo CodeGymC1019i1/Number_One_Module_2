@@ -4,12 +4,10 @@ class Stack
 {
     public $arr;
     public $convert;
-    public $arrList;
 
     public function __construct($convert) {
         $this->arr = [];
         $this->convert = $convert;
-        $this->arrList = 0;
     }
     public function push()
     {
