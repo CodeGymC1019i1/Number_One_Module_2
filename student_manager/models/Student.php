@@ -8,13 +8,15 @@ class Student
     public $age;
     public $address;
     public $group;
+    public $avatar;
 
-    public function __construct($name, $age, $address,$group)
+    public function __construct($name, $age, $address,$group, $avatar)
     {
         $this->name = $name;
         $this->address = $address;
         $this->age = $age;
         $this->group = $group;
+        $this->avatar = $avatar;
     }
 
     /**

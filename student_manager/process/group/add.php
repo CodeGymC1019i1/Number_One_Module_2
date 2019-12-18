@@ -76,7 +76,6 @@ $list = $listStudent->getListStudent();
             </div>
             <div class="form-group">
                 <label>Add member: </label>
-<!--                <input type="text" class="form-control" id="inputAddress" name="member" placeholder="search member">-->
                 <table class="table table-dark">
                     <?php foreach ($list as $key => $student): ?>
                     <tr>

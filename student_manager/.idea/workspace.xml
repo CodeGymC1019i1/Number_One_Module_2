@@ -58,7 +58,10 @@
       <workItem from="1576108599148" duration="10000" />
       <workItem from="1576142260283" duration="3051000" />
       <workItem from="1576426687604" duration="1628000" />
-      <workItem from="1576457972050" duration="599000" />
+      <workItem from="1576457972050" duration="642000" />
+      <workItem from="1576462311726" duration="1715000" />
+      <workItem from="1576593163416" duration="3163000" />
+      <workItem from="1576630461300" duration="7659000" />
     </task>
     <servers />
   </component>
@@ -70,23 +73,27 @@
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="652" y="34" width="595" height="1046" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1576143413677" />
-    <state x="735" y="315" width="446" height="481" key="FileChooserDialogImpl" timestamp="1576158349760">
+    <state x="735" y="315" width="462" height="481" key="FileChooserDialogImpl" timestamp="1576464122030">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
-    <state x="735" y="315" width="446" height="481" key="FileChooserDialogImpl/0.34.1920.1046@0.34.1920.1046" timestamp="1576158349760" />
+    <state x="735" y="315" width="462" height="481" key="FileChooserDialogImpl/0.34.1920.1046@0.34.1920.1046" timestamp="1576464122030" />
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1575900333960" />
     <state x="681" y="331" width="610" height="449" key="NewPhpClassDialog" timestamp="1576078082270">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="681" y="331" width="610" height="449" key="NewPhpClassDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1576078082270" />
-    <state x="748" y="482" width="404" height="178" key="NewPhpFileDialog" timestamp="1576427528194">
+    <state x="748" y="482" width="404" height="178" key="NewPhpFileDialog" timestamp="1576633920668">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
-    <state x="748" y="482" width="404" height="178" key="NewPhpFileDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1576427528194" />
+    <state x="748" y="482" width="404" height="178" key="NewPhpFileDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1576633920668" />
     <state x="789" y="478" width="399" height="149" key="NewPhpFileDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1575856724200" />
     <state x="540" y="251" width="840" height="1034" key="run.anything.popup" timestamp="1576070176468">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="540" y="251" width="840" height="1034" key="run.anything.popup/0.34.1920.1046@0.34.1920.1046" timestamp="1576070176468" />
+    <state x="655" y="457" width="610" height="200" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1576637268211">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="655" y="457" width="610" height="200" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1576637268211" />
   </component>
 </project>

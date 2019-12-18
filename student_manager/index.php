@@ -73,6 +73,7 @@ if (isset($_POST['keyword'])) {
                 <th scope="col">Tuổi</th>
                 <th scope="col">Địa Chỉ</th>
                 <th scope="col">Group</th>
+                <th scope="col">Avatar</th>
                 <th scope="col" colspan="2"></th>
             </tr>
             <?php foreach ($list as $key => $student): ?>
@@ -82,6 +83,7 @@ if (isset($_POST['keyword'])) {
                 <td><?php echo $student->age ?></td>
                 <td><?php echo $student->address ?></td>
                 <td><a href="process/group/showGroup.php?group=<?php echo $student->group ?>"><?php echo $student->group ?></a></td>
+                <td><img src="images/<?php echo $student->avatar ?>" style="width: 50px; height: 50px"></td>
                 <?php if ($_SESSION['username'] == 'admin'): ?>
                 <td><a href="process/student/delete.php?index=<?php echo $key; ?>"><input type="button" value="Delete" onclick="return confirm('ban co chan chan muon xoa')"></a>
                 </td>

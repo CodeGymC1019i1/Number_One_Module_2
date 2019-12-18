@@ -11,14 +11,19 @@ if ($_SESSION['username'] !== "admin") {
     echo "<script>window.location = '../../index.php'</script>";
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+    include_once "upload.php";
     $path = "../../data/student.json";
     if (!empty($_POST['name']) && !empty($_POST['age']) && !empty($_POST['address']) && !empty($_POST['group'])) {
         $name = $_POST['name'];
         $age = $_POST['age'];
         $address = $_POST['address'];
         $group = $_POST['group'];
-        $student = new Student($name, $age, $address, $group);
+        if (empty($_FILES['avatar']['name'])) {
+            $avatar = "null.jpg";
+        } else {
+            $avatar = $_FILES['avatar']['name'];
+        }
+        $student = new Student($name, $age, $address, $group, $avatar);
         $listStudent = new StudentManager($path);
         $listStudent->add($student);
     } else {
@@ -70,7 +75,7 @@ $list = $listGroup->getListGroup();
             </form>
         </div>
     </nav>
-    <form method="post" class="align-content-center">
+    <form method="post" enctype="multipart/form-data" class="align-content-center">
         <fieldset>
             <legend>Add student</legend>
             <div class="form-row">
@@ -85,7 +90,7 @@ $list = $listGroup->getListGroup();
             </div>
             <div class="form-group">
                 <label>Address: </label>
-                <input type="text" class="form-control" id="inputAddress" name="address" placeholder="1234 Main St">
+                <input type="text" class="form-control" name="address" placeholder="1234 Main St">
             </div>
             <div class="form-group">
                 <label>Group: </label>
@@ -94,6 +99,10 @@ $list = $listGroup->getListGroup();
                         <option value="<?php echo $group->name; ?>"><?php echo $group->name; ?></option>
                     <?php endforeach; ?>
                 </select>
+            </div>
+            <div class="form-group">
+                <label>Avatar: </label>
+                <input type="file" class="form-control" name="avatar" placeholder="Avatar">
             </div>
             <button type="submit" class="btn btn-primary">Add student</button>
         </fieldset>

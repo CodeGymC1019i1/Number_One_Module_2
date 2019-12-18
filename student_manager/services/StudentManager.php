@@ -10,7 +10,8 @@ class StudentManager extends FileManager
             'name' => $student->name,
             'age' => $student->age,
             'address' => $student->address,
-            'group' => $student->group
+            'group' => $student->group,
+            'avatar' => $student->avatar
         ];
         array_push($listStudent, $data);
         $this->saveData($listStudent);
@@ -26,7 +27,8 @@ class StudentManager extends FileManager
                 $item['name'],
                 $item['age'],
                 $item['address'],
-                $item['group']
+                $item['group'],
+                $item['avatar']
             );
             array_push($list, $student);
         }
@@ -49,6 +51,11 @@ class StudentManager extends FileManager
         $students[$index]->age = $_POST['age'];
         $students[$index]->address = $_POST['address'];
         $students[$index]->group = $_POST['group'];
+        if (empty($_FILES['avatar']['name'])) {
+            $_FILES['avatar']['name'] = $students[$index]->avatar;
+        } else {
+            $students[$index]->avatar = $_FILES['avatar']['name'];
+        }
         $this->saveData($students);
         header("location: ../../index.php");
     }
@@ -67,11 +74,13 @@ class StudentManager extends FileManager
                     $value["name"],
                     $value["age"],
                     $value["address"],
-                    $value["group"]
+                    $value["group"],
+                    $value["avatar"]
                 );
                 array_push($list, $student);
             }
         }
         return $list;
     }
+
 }

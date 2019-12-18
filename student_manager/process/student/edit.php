@@ -15,6 +15,7 @@ $listStudent = new StudentManager($path);
 $student = $listStudent->getListStudent();
 $index = (int)$_GET['index'];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    include_once "upload.php";
     $listStudent->edit($index);
 }
 $pathGroup = "../../data/group.json";
@@ -63,7 +64,7 @@ $list = $listGroup->getListGroup();
         </div>
     </nav>
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <table class="table table-dark">
             <tr>
                 <th scope="col">STT</th>
@@ -71,27 +72,34 @@ $list = $listGroup->getListGroup();
                 <th scope="col">Age:</th>
                 <th scope="col">Address:</th>
                 <th scope="col">Group:</th>
+                <th scope="col">Avatar:</th>
             </tr>
             <tr>
-                <td><input type="text" name="key" value="<?php echo $index + 1 ?>" disabled></td>
+                <td><input type="text" name="key" value="<?php echo $index + 1 ?>" disabled style="width: 50px"></td>
                 <td><input type="text" name="name" value="<?php echo $student[$index]->name; ?>"></td>
                 <td><input type="text" name="age" value="<?php echo $student[$index]->age; ?>"></td>
                 <td><input type="text" name="address" value="<?php echo $student[$index]->address; ?>"></td>
                 <td>
-
                     <select class="custom-select" name="group">
                         <?php foreach ($list as $key => $group): ?>
-                            <option value="<?php echo $group->name; ?>"
-                                <?php if ($group->name == $student[$index]->group): ?> selected <?php endif ?>>
+                            <option value="<?php echo $group->name; ?>"<?php if ($group->name == $student[$index]->group): ?> selected <?php endif ?>>
                                 <?php echo $group->name; ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
 
                 </td>
+                <td>
+                    <div class="form-group">
+                        <img src="../../images/<?php echo $student[$index]->avatar ?>" style="width: 50px; height: 50px">
+                        <input type="file" name="avatar">
+                    </div>
+                </td>
+
             </tr>
             <tr>
-                <th scope="col" colspan="5"><input type="submit" value="edit" onclick="return confirm('are you sure ?')"></th>
+                <th scope="col" colspan="5"><input type="submit" value="edit"
+                                                   onclick="return confirm('are you sure ?')"></th>
             </tr>
         </table>
     </form>

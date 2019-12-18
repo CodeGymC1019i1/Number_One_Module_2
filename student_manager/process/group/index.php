@@ -71,7 +71,7 @@ if (isset($_POST['keyword'])) {
             <?php foreach ($list as $key => $group): ?>
             <tr>
                 <td><?php echo $key + 1 ?></td>
-                <td><?php echo $group->name ?></td>
+                <td><a href="showGroup.php?group=<?php echo $group->name; ?>"><?php echo $student->group ?><?php echo $group->name; ?></a></td>
                 <td><?php echo count($group->member) ?></td>
                 <td><a href="delete.php?index=<?php echo $key; ?>"><input type="button" value="Delete" onclick="return confirm('ban co chan chan muon xoa')"></a>
                 </td>
