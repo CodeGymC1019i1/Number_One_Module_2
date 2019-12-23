@@ -7,8 +7,19 @@ include_once "../../class/User.php";
 $id = (int)$_GET['id'];
 $userManager = new UserManager();
 $user = $userManager->getUserID($id);
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    $userManager->edit($id);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    include_once "uploadImage.php";
+    $name = $_POST['name'];
+    $age = $_POST['age'];
+    $address = $_POST['address'];
+    if ($_FILES['avatar']['type'] == "") {
+        $avatar = $user->getAvatar();
+    } else {
+        unlink("../../images/" . $user->getAvatar());
+        $avatar = date("H:m:s") . $_FILES['avatar']['name'];
+    }
+    $userManager->edit($id, $name, $age, $address, $avatar);
 }
 ?>
 <!doctype html>
@@ -21,6 +32,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        h1 {
+            color: #cccccc;
+        }
+
+        img {
+            width: 70px;
+            height: 70px;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -38,23 +59,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             </form>
         </div>
     </nav>
-    <form method="post">
-        <h1 style="color: #cccccc">ADD USER:</h1>
+    <form method="post" enctype="multipart/form-data">
+        <h1>EDIT USER:</h1>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputEmail4" >User name</label>
+                <label>User name: </label>
                 <input type="text" class="form-control" name="name" value="<?php echo $user->getName(); ?>">
             </div>
             <div class="form-group col-md-6">
-                <label for="inputPassword4" >Age </label>
+                <label>Age: </label>
                 <input type="number" class="form-control" name="age" value="<?php echo $user->getAge(); ?>">
             </div>
         </div>
         <div class="form-group">
-            <label for="inputAddress" >Address</label>
-            <input type="text" class="form-control" placeholder="1234 Main St" name="address" value="<?php echo $user->getAddress(); ?>">
+            <label>Address: </label>
+            <input type="text" class="form-control" placeholder="1234 Main St" name="address"
+                   value="<?php echo $user->getAddress(); ?>">
         </div>
-        <button type="submit" class="btn btn-outline-success">Edit</button>
+        <div>
+            <label>Avatar: </label>
+            <img src='../../images/<?php echo $user->getAvatar(); ?>'>
+            <input type="file" class="form-control" value="Upload" name="avatar">
+        </div>
+        <button type="submit" class="btn btn-outline-success" onclick="return confirm('bạn có chắc chắn muốn sửa ?')">Edit</button>
     </form>
 </div>
 

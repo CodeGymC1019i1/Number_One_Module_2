@@ -5,12 +5,19 @@ include_once "../../class/UserManager.php";
 include_once "../../class/User.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    include_once "uploadImage.php";
     $username = $_POST['username'];
     $age = $_POST['age'];
     $address = $_POST['address'];
+    if ($_FILES['avatar']['type'] == "") {
+        $avatar = "user.jpeg";
+    } else {
+        $avatar = date("H:m:s").$_FILES['avatar']['name'];
+    }
     $userManager = new UserManager();
-    $user = new User(null, $username, $age, $address);
+    $user = new User(null, $username, $age, $address, $avatar);
     $userManager->add($user);
+
 }
 ?>
 
@@ -24,6 +31,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        h1 {
+            color: #cccccc;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -41,22 +53,27 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             </form>
         </div>
     </nav>
-    <form method="post">
-        <h1 style="color: #cccccc">ADD USER:</h1>
+    <form method="post" enctype="multipart/form-data">
+        <h1>ADD USER:</h1>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputEmail4" >User name</label>
+                <label>User name</label>
                 <input type="text" class="form-control" name="username">
             </div>
             <div class="form-group col-md-6">
-                <label for="inputPassword4" >Age </label>
+                <label>Age </label>
                 <input type="number" class="form-control" name="age">
             </div>
         </div>
         <div class="form-group">
-            <label for="inputAddress" >Address</label>
+            <label>Address</label>
             <input type="text" class="form-control" placeholder="1234 Main St" name="address">
         </div>
+        <div>
+            <label>Avatar</label>
+            <input type="file" class="form-control" value="Upload" name="avatar">
+        </div>
+        <br>
         <button type="submit" class="btn btn-outline-success">Add</button>
     </form>
 </div>

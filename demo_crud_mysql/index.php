@@ -24,6 +24,10 @@ $users = $userManager->getList();
         table, tr, td, th{
             text-align: center;
         }
+        img {
+            width: 60px;
+            height: 60px;
+        }
     </style>
 </head>
 <body>
@@ -62,10 +66,10 @@ $users = $userManager->getList();
                     <td><?php echo $user->getName(); ?></td>
                     <td><?php echo $user->getAge(); ?></td>
                     <td><?php echo $user->getAddress(); ?></td>
-                    <td></td>
+                    <td><img src="images/<?php echo $user->getAvatar(); ?>"></td>
                     <td>
                         <a href="process/user/delete.php?id=<?php echo $user->getID(); ?>">
-                            <button type="button" class="btn btn-outline-danger">Delete</button>
+                            <button type="button" class="btn btn-outline-danger" onclick="return confirm('bạn có chắc chắn muốn xóa không ?')">Delete</button>
                         </a>
                         <a href="process/user/edit.php?id=<?php echo $user->getID(); ?>">
                             <button type="button" class="btn btn-outline-success">Edit</button>

@@ -29,9 +29,9 @@ class UserManager
         $this->userDB->delete($id);
     }
 
-    public function edit($id)
+    public function edit($id, $name, $age, $address, $avatar)
     {
-        $this->userDB->edit($id);
+        $this->userDB->edit($id, $name, $age, $address, $avatar);
     }
 
     public function getUserID($id)

@@ -7,13 +7,15 @@ class User
     protected $name;
     protected $age;
     protected $address;
+    protected $avatar;
 
-    public function __construct($id, $name, $age, $address)
+    public function __construct($id, $name, $age, $address, $avatar)
     {
         $this->id = $id;
         $this->name = $name;
         $this->age = $age;
         $this->address = $address;
+        $this->avatar = $avatar;
     }
 
     /**
@@ -47,5 +49,14 @@ class User
     {
         return $this->id;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
 
 }

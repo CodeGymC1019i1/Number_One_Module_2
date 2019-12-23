@@ -17,7 +17,7 @@ class UserDB
         $result = $stmt->fetchALL();
         $arr = [];
         foreach ($result as $item) {
-            $user = new User($item['id'], $item['name'], $item['age'], $item['address']);
+            $user = new User($item['id'], $item['name'], $item['age'], $item['address'], $item['avatar']);
             array_push($arr, $user);
         }
         return $arr;
@@ -29,12 +29,14 @@ class UserDB
         $name = $user->getName();
         $age = $user->getAge();
         $address = $user->getAddress();
-        $sql = "INSERT INTO users (id, name, age, address) VALUE (?, ?,?,?)";
+        $avatar = $user->getAvatar();
+        $sql = "INSERT INTO users (id, name, age, address, avatar) VALUE (?, ?,?,?,?)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(1, $id);
         $stmt->bindParam(2, $name);
         $stmt->bindParam(3, $age);
         $stmt->bindParam(4, $address);
+        $stmt->bindParam(5, $avatar);
         $stmt->execute();
     }
 
@@ -45,14 +47,9 @@ class UserDB
         $stmt->execute();
     }
 
-    public function edit($id)
+    public function edit($id, $name, $age, $address, $avatar)
     {
-        $name = $_POST['name'];
-        $age = $_POST['age'];
-        $address = $_POST['address'];
-
-        $sql = "UPDATE users SET name = '$name', age = $age, address = '$address' WHERE id=$id";
-        var_dump($sql);
+        $sql = "UPDATE users SET name = '$name', age = $age, address = '$address', avatar = '$avatar' WHERE id=$id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         header("location: ../../index.php");
@@ -64,8 +61,7 @@ class UserDB
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();
-        $user = new User($id, $result[0]['name'], $result[0]['age'], $result[0]['address']);
-        return $user;
+        return new User($id, $result[0]['name'], $result[0]['age'], $result[0]['address'], $result[0]['avatar']);
     }
 
 }
